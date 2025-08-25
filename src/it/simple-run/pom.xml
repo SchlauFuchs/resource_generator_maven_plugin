@@ -1,0 +1,37 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>example-execution</artifactId>
+    <groupId>null</groupId>
+    <version>0-SNAPSHOT</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.hackemesser</groupId>
+                <artifactId>resource-generator-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>generate-config</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                        <configuration>
+                            <templateFile>src/main/resources/templates/example.sql.th</templateFile>
+                            <outputFile>data/example.sql</outputFile>
+                            <templateMode>TEXT</templateMode>
+                            <properties>
+                                <!-- Multiple example IDs as comma-separated list -->
+                                <example_id>1001,1002,1003,1004,1005</example_id>
+                                <!-- Single values for other properties -->
+                                <parent_id>500</parent_id>
+                                <message>Test message from Maven build</message>
+                                <by>integration-test</by>
+                            </properties>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

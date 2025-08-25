@@ -1,0 +1,13 @@
+INSERT INTO examples
+    (example_id,
+     parent_id,
+     message,
+     created_by,
+     created_timestamp)
+VALUES[# th:each="exampleId,iterStat : ${example_id}"]
+    ([(${exampleId})],
+     '[(${parent_id})]',
+     '[(${message})]',
+     '[(${USER})]',
+     now())[# th:unless="${iterStat.last}"],[/][# th:if="${iterStat.last}"];[/]
+[/]
